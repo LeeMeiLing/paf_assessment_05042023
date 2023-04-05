@@ -48,6 +48,7 @@ public class UserRepository {
                 return null; // test if can return null or return ""
             }
         }catch(Exception ex){ // try dataacessexception
+            System.out.println("fail to insert user in user repo"); // debug
             return null;
         }
 
