@@ -3,6 +3,7 @@ package ibf2022.paf.assessment.server.controllers;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import ibf2022.paf.assessment.server.models.Task;
+import ibf2022.paf.assessment.server.models.User;
+import ibf2022.paf.assessment.server.repositories.TaskRepository;
 import ibf2022.paf.assessment.server.repositories.UserRepository;
 
 // TODO: Task 4, Task 8
@@ -19,6 +22,9 @@ public class TasksController {
 
     @Autowired
     UserRepository userRepo;
+
+    @Autowired
+    TaskRepository taskRepo;
 
     // POST /task
     // Content-Type: application/x-www-form-urlencoded
@@ -39,8 +45,6 @@ public class TasksController {
 
         List<Task> tasks = new ArrayList<>();
         
-        // TODO: call svc to finduserbyusername , get the id and assign to task
-        
         for (int i = 0; i < totalTask; i++){
             Task task = new Task();
             task.setUsername(username);
@@ -51,6 +55,12 @@ public class TasksController {
         }
 
         System.out.println(tasks); // debug
+
+        // // debug, to remove
+        // for(Task t : tasks){
+        //     t.setUserId("1b80114c");
+        //     taskRepo.insertTask(t);
+        // }
 
         return null;
 

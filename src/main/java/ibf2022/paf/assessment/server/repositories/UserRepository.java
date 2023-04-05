@@ -20,6 +20,7 @@ public class UserRepository {
     private final String SELECT_BY_USERNAME_SQL= "select user_id, username, name from user where username = ?";
     private final String INSERT_USER_SQL = "insert into user (user_id, username, name) values (?,?,?)";
 
+    // return user if found, return empty if not found
     public Optional<User> findUserByUsername(String username){
 
         try{
@@ -35,6 +36,7 @@ public class UserRepository {
         
     }
 
+    // return userId if successful return null if fail to insert user
     public String insertUser(User user){
 
         String userId = UUID.randomUUID().toString().substring(0,8);
@@ -45,7 +47,7 @@ public class UserRepository {
             if(affectedRows > 0){
                 return userId;
             }else{
-                return null; // test if can return null or return ""
+                return null; // test if can return null
             }
         }catch(Exception ex){ // try dataacessexception
             System.out.println("fail to insert user in user repo"); // debug
