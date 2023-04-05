@@ -58,8 +58,5 @@ public class TodoService {
             }
         }
 
-        // testing, to remove
-        System.out.println(" TODO CREATED ");
-
     }
 }

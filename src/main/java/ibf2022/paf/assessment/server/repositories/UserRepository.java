@@ -43,15 +43,19 @@ public class UserRepository {
         user.setUserId(userId);
 
         try{
+            
             Integer affectedRows = jdbcTemplate.update(INSERT_USER_SQL, user.getUserId(), user.getUsername(), user.getName());
+            
             if(affectedRows > 0){
                 return userId;
             }else{
-                return null; // test if can return null
+                return null;
             }
-        }catch(Exception ex){ // try dataacessexception
-            System.out.println("fail to insert user in user repo"); // debug
+
+        }catch(Exception ex){ 
+
             return null;
+
         }
 
 

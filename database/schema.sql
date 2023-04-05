@@ -13,10 +13,11 @@ create table if not exists user(
 create table if not exists task(
 	task_id int not null auto_increment,
     description varchar(255) not null,
-    priority int not null,
+    priority int not null,check(priority>=1 and priority<=3),
     due_date date not null,
     user_id varchar(8) not null,
     constraint task_pk primary key(task_id),
     constraint task_user_fk foreign key(user_id) references user(user_id)
 );
+
 

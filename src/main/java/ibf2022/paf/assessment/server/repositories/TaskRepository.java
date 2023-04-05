@@ -20,13 +20,13 @@ public class TaskRepository {
 
         try{
             Integer affectedRows = jdbcTemplate.update(INSERT_TASK_SQL, task.getDescription(), task.getPriority(), task.getDueDate(), task.getUserId());
+            
             if(affectedRows > 0){
                 return 1;
             }else{
                 return 0; 
             }
         }catch(Exception ex){
-            System.out.println("fail to insert task in task repo"); // debug
             return 0;
         }
 
